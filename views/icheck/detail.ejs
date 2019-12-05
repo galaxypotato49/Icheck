@@ -1,0 +1,50 @@
+<%- include('includes/header'); -%>
+<%- include('includes/nav'); -%>
+
+<div class="container">
+
+<% if (feed) { %>
+  <div class="row">
+    <div class="col">
+      <h1><%= feed.title %></h1>
+      <h5> <%= feed.category_title %> / 선생님: <%= feed.author %></h5>
+      <p>
+        입력: <%= moment(feed.inserted).format('YYYY-MM-DD h:mm:ss a') %>
+        <% if (feed.updated) { %>/ 수정: <%= moment(feed.updated).format('YYYY-MM-DD h:mm:ss a') %><% } %>
+      </p>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col" style="white-space: pre-line;">
+      <%- feed.desc %>
+    </div>
+    <div class="col">
+      <% if (typeof feed.upload !== 'undefined' && feed.upload) { %>
+        <img src="/uploads/<%= feed.upload %>">
+      <% } %>
+
+    </div>
+    
+  </div>
+
+
+
+  <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+
+    <div class="btn-group" role="group" aria-label="First group">
+      <a href="/icheck/<%= feed.id %>/edit" class="btn btn-outline-primary">수정</a>
+      <a href="/icheck/<%= feed.id %>/delete" class="btn btn-outline-secondary">삭제</a>
+    </div>
+    <div class="input-group">
+      <a href="/icheck/" class="btn btn-outline-info">목록</a>
+    </div>
+  </div>
+<% } else { %>
+  <p>Not exist</p>
+<% } %>
+
+
+</div>
+<%- include('includes/footer'); -%>
