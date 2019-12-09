@@ -1,5 +1,5 @@
-<%- include('includes/header'); -%>
-<%- include('includes/nav'); -%>
+<%- include('../icheck/includes/header'); -%>
+<%- include('../icheck/includes/nav'); -%>
 
 <div class="container">
 <div class="row">
@@ -7,21 +7,20 @@
         <hr>
         <h4>아이들</h4>
         <!-- Styles from https://getbootstrap.com/docs/4.3/components/forms/#form-controls -->
-        <form method="post" action="icheck/kids/">
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="exampleInputEmail1">이름</label>
               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" name="name">
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">반</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="clas"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="clas"></textarea>
             </div>
-            <div class="form-group"><!--업로드 div가... 필요...-->
+            <div class="form-group">
               <label for="inputUpload">Photo</label>
               <input type="file" name="upload"  id="inputUpload" aria-describedby="inputUpload">
               <small id="uploadHelp" class="form-text text-muted">아이 사진을 업로드 해주세요. </small>
-            </div> 
-            
+            </div>
             <button type="submit" class="btn btn-primary">추가하기</button>
         </form>
         <hr>
@@ -35,10 +34,9 @@
         <!-- Styles from https://getbootstrap.com/docs/4.3/components/list-group/#flush-->
         <% if (kids.length>0) { %>
           <ul class="list-group list-group-flush">
-
-            <% for(var i=0; i < kids.length; i++) { %>
+            <% for(var ki=0; ki < kids.length; i++) { %>
               <li class="list-group-item">
-                <strong><%= kids[i].name %> </strong>
+                <%= kids[i].name %> 
                 <%= kids[i].clas %>
                 <%= kids[i].upload %>
               </li>
@@ -50,4 +48,4 @@
     </div>
 </div>    
 </div>
-<%- include('includes/footer'); -%>
+<%- include('../icheck/includes/footer'); -%>

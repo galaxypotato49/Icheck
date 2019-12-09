@@ -59,6 +59,14 @@ app.use('/', root);
 var icheck = require('./routes/icheck.js')(app, conn, upload);
 app.use('/icheck', icheck);
 
+/* kids app*/
+var kids = require('./routes/kids.js')(app, conn, upload);
+app.use('/kids', kids);
+
+/* mypage app */
+var mypage = require('./routes/mypage.js')(app, conn, upload);
+app.use('/mypage', mypage);
+
 /* account app */
 var account = require('./routes/account.js')(app, conn, upload);
 app.use('/account', account);
